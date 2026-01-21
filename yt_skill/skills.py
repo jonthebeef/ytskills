@@ -26,9 +26,14 @@ TRANSCRIPT:
 
 Based on this video, extract the most valuable skill or methodology being taught. If the video covers multiple distinct skills, focus on the primary/most important one.
 
-Output a complete SKILL.md file in this format:
+Output a complete SKILL.md file with YAML frontmatter in this format:
 
 ```markdown
+---
+name: skill-name-in-kebab-case
+description: A concise description (1-2 sentences) of what this skill does and when Claude should use it. This is used for automatic skill matching.
+---
+
 # [Skill Name]
 
 [One paragraph description of what this skill does and when to use it]
