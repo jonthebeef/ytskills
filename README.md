@@ -76,7 +76,25 @@ Claude CLI (extract skill from transcript)
 ~/.claude/skills/skill-name/SKILL.md
 ```
 
-The app uses `claude -p` (print mode) to process transcripts, so it piggybacks on your existing Claude Code authentication - no separate API key needed.
+### Claude Code Integration
+
+The app doesn't use the Anthropic API directly. Instead, it shells out to the `claude` CLI that comes with Claude Code:
+
+```python
+subprocess.run(["claude", "-p", prompt], capture_output=True, text=True)
+```
+
+The `-p` (print) flag runs Claude Code in non-interactive mode:
+- Takes a prompt as an argument
+- Sends it to Claude using your existing authentication
+- Returns the response to stdout
+
+This means:
+- **No separate API key needed** - uses your Claude Code auth
+- **No extra costs** - uses your existing Claude Code subscription
+- **Same model access** - whatever model you have access to in Claude Code
+
+It's essentially automating what you'd do manually: paste a transcript into Claude Code and ask "extract a skill from this".
 
 ## Limitations
 
